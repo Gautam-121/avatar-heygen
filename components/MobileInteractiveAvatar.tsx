@@ -423,30 +423,34 @@ export default function InteractiveAvatar() {
       };
     }
   }, [mediaStream, stream]);
-
+  
   return (
     <div className="w-full flex flex-col gap-4" id="avatar-card">
-      <Card>
-        <CardBody className="h-[400px] flex flex-col justify-center items-center" >
+      <div>
+        <div className="" >
           {stream ? (
-            <div className="h-[400px] justify-center items-center flex rounded-lg overflow-hidden">
+            <div className="justify-center items-center flex rounded-lg overflow-hidden">
               <video
+              className="video"
                 ref={mediaStream}
                 autoPlay
                 playsInline
                 style={{
-                  width: "90%",
-                  // height: "100%",
-                  borderRadius: '13px',
-                  objectFit: 'cover',
-                  filter:'hue-rotate(5deg)'
+                  width: "86%",
+                  height: "335px",
+                  objectFit: "contain",
+                  filter:'hue-rotate(5deg)',
+                  marginTop:'1.10rem'
                 }}
               >
                 <track kind="captions" />
               </video>
-              <div className="flex flex-col gap-2 absolute bottom-3 right-3">
+              <div className="flex flex-row gap-10 absolute" id="avatarsession-btn"style={{marginTop:'24rem'}}>
                 <Button
                   size="md"
+                  style={{
+                    width:"9rem"
+                  }}
                   onClick={handleInterrupt}
                   className="bg-gradient-to-tr from-indigo-500 to-indigo-300 text-white rounded-lg"
                   variant="shadow"
@@ -455,6 +459,9 @@ export default function InteractiveAvatar() {
                 </Button>
                 <Button
                   size="md"
+                  style={{
+                    width:"9rem"
+                  }}
                   onClick={endSession}
                   className="bg-gradient-to-tr from-indigo-500 to-indigo-300  text-white rounded-lg"
                   variant="shadow"
@@ -464,9 +471,9 @@ export default function InteractiveAvatar() {
               </div>
             </div>
           ) : !isLoadingSession ? (
-            <div className="h-full justify-center items-center flex flex-col gap-8 w-[500px] self-center">
-              <div className="flex flex-col gap-2 w-full">
-                <p className="text-sm font-medium leading-none">
+            <div className="session-card">
+              <div>
+                <p className="custom-avatar">
                   Custom Avatar ID
                 </p>
                 <Input
@@ -491,8 +498,8 @@ export default function InteractiveAvatar() {
                   ))}
                 </Select> */}
               </div>
-              <div className="flex flex-col gap-2 w-full">
-                <p className="text-sm font-medium leading-none">
+              <div style={{marginTop:"1rem"}}>
+                <p className="custom-avatar">
                   Custom Voice ID
                 </p>
                 <Input
@@ -518,6 +525,7 @@ export default function InteractiveAvatar() {
                 size="md"
                 onClick={startSession}
                 className="bg-gradient-to-tr from-indigo-500 to-indigo-300 w-full text-white"
+                id="session-btn"
                 variant="shadow"
               >
                 Start session
@@ -526,24 +534,23 @@ export default function InteractiveAvatar() {
           ) : (
             <Spinner size="lg" color="default" />
           )}
-        </CardBody>
+        </div>
         {isSessionActive && ( // Only show input when session is active
-        <CardFooter className="flex flex-col">
+        <div className="flex flex-col" id="textInput" style={{paddingRight:'0.5rem',paddingLeft:'0.5rem'}}>
           {/* <Divider /> */}
             <InteractiveAvatarTextInput
-              label={' '}
+              label=" "
               placeholder="Chat with the avatar"
               input={newInput}
               onSubmit={() => {
-                setIsLoadingChat(false);
+                setIsLoadingChat(true);
                 if (!newInput) {
                   setDebug("Please enter text");
                   return;
                 }
                 // handleSubmit();
-                handleGetResponse(newInput);
+                handleGetResponse("");
               }}
-              
               setInput={setNewInput}
               loading={isLoadingChat}
               endContent={
@@ -576,20 +583,14 @@ export default function InteractiveAvatar() {
               }
               disabled={!stream}
             />
-        </CardFooter>
-          )
-        }
-      </Card>
+        </div>
+          )}
+      </div>
       {
         gptoutput && <p>
             {gptoutput}
         </p>
       }
-      {/* <p className="font-mono text-right">
-        <span className="font-bold">Console:</span>
-        <br />
-        {debug}
-      </p> */}
     </div>
   );
 }
