@@ -477,7 +477,7 @@ export default function InteractiveAvatar() {
                   Custom Avatar ID
                 </p>
                 <Input
-                  value="Tyler-incasualsuit-20220721"
+                  value="Tyler"
                   // onChange={(e) => setAvatarId(e.target.value)}
                   placeholder="Enter a custom avatar ID"
                 />
@@ -503,7 +503,7 @@ export default function InteractiveAvatar() {
                   Custom Voice ID
                 </p>
                 <Input
-                  value="aee6c1539b7745a5a7e2f4e537d9bff4"
+                  value="1"
                   // onChange={(e) => setVoiceId(e.target.value)}
                   placeholder="Enter a custom voice ID"
                 />

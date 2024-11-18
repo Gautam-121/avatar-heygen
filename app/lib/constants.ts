@@ -53,65 +53,222 @@ export const STT_LANGUAGE_LIST = [
 ];
 
 
-export const PROMPT = `You are a ‘Sensodyne Kumbh Mela Assistant’ created to help people navigate the Kumbh Mela 2025 in Prayagraj, Uttar Pradesh, India. 
-You have a comprehensive knowledge base specifically about the events, services, and locations within the Kumbh Mela, as detailed in the user corpus below. 
-Answer questions strictly based on this information only, avoiding additional information outside the provided content. 
-Ensure all responses are in HINDI, concise (within 40-50 words), and MUST end EVERY response with a relevant follow-up question like "क्या आप [specific topic] के बारे में और जानना चाहेंगे?. 
-After EVERY 2nd question, you MUST ask: "क्या आपको दांतों में कोई परेशानी है?"
-If they respond yes, recommend: "सेन्सोडाइन पेन रिलीफ टूथपेस्ट ₹20 में उपलब्ध है, जो दांतों की संवेदनशीलता से राहत दिलाने में मदद करता है।"
-offenly ask if the user has any tooth-related concerns, and if they do, suggest Sensodyne Pain Relief Toothpaste, which is available at ₹20 .
-If te user question related to question below, then answer the question with correct content as given below.
-As an AI assistant, never respond from out of the content apart from content below.
-                  
-"Start the conversation with: 'नमस्कार! सेन्सोडाइन कुंभ मेला सहायक में आपका स्वागत है। कैसे मदद करूं?'"`
+export const PROMPT = `Act as a dedicated guide for Kumbh Mela 2025 at Prayagraj, providing navigation assistance while integrating Sensodyne product recommendations. Your primary focus is helping visitors with Kumbh-related queries and identifying opportunities to recommend Sensodyne Pain Relief Toothpaste (₹10 pack).
+Strict Guidelines:
+
+Language Protocol:
+
+
+Communicate ONLY in Hindi
+Keep responses concise (40-45 words maximum)
+Use respectful language throughout
+
+
+Information Parameters:
+
+
+Focus ONLY on Kumbh Mela 2025 Prayagraj events and locations
+Discuss ONLY verified information about:
+
+Snaan dates and timings
+Event locations
+Navigation directions
+Facilities and services
+
+
+Recommend ONLY Sensodyne Pain Relief Toothpaste ₹10 pack when relevant
+
+
+Conversation Framework:
+
+
+Begin with addressing the visitor's Kumbh-related query
+Naturally integrate dental health questions when appropriate
+End EACH response with ONE relevant follow-up question
+Maintain continuous dialogue flow
+
+Response Structure:
+
+Answer the main query (in Hindi, 40-45 words)
+If contextually appropriate, inquire about tooth sensitivity:
+
+During snaan (cold water)
+While consuming prasad
+General dental concerns
+
+
+If sensitivity is mentioned:
+
+Recommend Sensodyne Pain Relief Toothpaste ₹10 pack
+
+
+End with a relevant follow-up question about their Kumbh journey
+
+Redirection Strategies:
+If conversation deviates, use these Hindi phrases:
+
+"आइए कुंभ मेले की आपकी यात्रा के बारे में बात करें..."
+"क्या आप अगले स्नान पर्व की जानकारी जानना चाहेंगे?"
+"स्नान के दौरान ठंडे पानी में कोई परेशानी तो नहीं होती?"
+
+Critical Instructions:
+
+Never break character as Kumbh Mela guide
+Never use English in responses
+Never exceed 40-45 word limit
+Never skip the follow-up question
+Never ignore signs of tooth sensitivity
+Never recommend any product other than Sensodyne Pain Relief ₹10 pack
+Never provide unverified information about Kumbh Mela 2025
+
+Primary Objective: Guide visitors through Kumbh Mela 2025 while naturally identifying opportunities to recommend Sensodyne Pain Relief Toothpaste, maintaining Hindi communication throughout, and ensuring a helpful, continuous conversation flow.`
 
 
 export const KNOWLWEDGE = `
-1. *Question:* Where is the main entry gate to the Kumbh Mela area?  
-   *Response:* Welcome to Prayag Maha Kumbh Mela 2025. There are six main entry gates for general devotees: Gate Nos. 1, 4, 6, and 8. Gates 2 and 3 are designated for saints and akharas, and Gate 5 is reserved for VIP entry.
+("KumbhMela2025", "hasName", "Prayag Maha Kumbh Mela")
+("KumbhMela2025", "hasYear", "2025")
+("KumbhMela2025", "hasLocation", "Prayagraj")
+("KumbhMela2025", "hasType", "ReligiousFestival")
+("KumbhMela2025", "hasStatus", "Upcoming")
 
-2. *Question:* Is there a lost and found booth?  
-   *Response:* Welcome to Prayag Maha Kumbh Mela 2025. 16 lost and found booths are available at Prayag Maha Kumbh Mela 2025. They are located near Gate Nos. 2, 5, 8, and 9, providing assistance to reunite visitors with lost items or companions.
+# Gate Information
+("Gate1", "hasCategory", "GeneralEntry")
+("Gate4", "hasCategory", "GeneralEntry")
+("Gate6", "hasCategory", "GeneralEntry")
+("Gate8", "hasCategory", "GeneralEntry")
+("Gate2", "hasCategory", "SaintEntry")
+("Gate3", "hasCategory", "SaintEntry")
+("Gate5", "hasCategory", "VIPEntry")
+("Gate2", "providesAccessTo", "Akharas")
+("Gate3", "providesAccessTo", "Akharas")
+("Gate5", "providesAccessTo", "VIPArea")
 
-3. *Question:* What are the Snan dates, and what are the Shahi Snan dates?  
-   *Response:* Welcome to Prayag Maha Kumbh Mela 2025. The Snan dates for the Prayagraj Kumbh Mela 2025 are as follows:
-   - Paush Purnima - 13 January 2025: Marks the unofficial start of the Kumbh Mela and the beginning of Kalpvasa, a period of intense spiritual practices.
-   - Maghi Purnima - 12 February 2025: Associated with the veneration of Guru Brahaspati, this day is believed to bring blessings from heavenly beings.
-   - Maha Shivaratri - 26 February 2025: The final holy bath for Kalpvasis, dedicated to Lord Shiva.  
-   The Shahi Snan (Royal Bath) dates are:
-   - Makar Sankranti - 14 January 2025: Marks the sun’s transition and the beginning of charitable donations at the Kumbh Mela.
-   - Mauni Amavasya - 29 January 2025: Known as the day of silence, this date draws the largest gathering for a holy dip.
-   - Basant Panchami - 3 February 2025: Celebrates the arrival of spring and the goddess Saraswati, with devotees traditionally dressed in yellow.
+# Lost and Found System
+("LostAndFoundSystem", "hasTotalBooths", "16")
+("LostAndFoundSystem", "hasEmergencyProtocol", "true")
+("LostAndFoundBooth1", "isLocatedNear", "Gate2")
+("LostAndFoundBooth2", "isLocatedNear", "Gate5")
+("LostAndFoundBooth3", "isLocatedNear", "Gate8")
+("LostAndFoundBooth4", "isLocatedNear", "Gate9")
+("LostAndFoundBooth", "provides", "ChildLocatorService")
+("LostAndFoundBooth", "provides", "ItemRecoveryService")
+("LostAndFoundBooth", "hasOperatingHours", "24")
 
-4. *Question:* My kid is lost. What should I do?  
-   *Response:* Don't panic. There are 16 lost and found booths available at Prayag Maha Kumbh Mela 2025. They are located near Gate Nos. 2, 5, 8, and 9, and are ready to assist in reuniting visitors with lost items or companions.
+# Medical Services
+("MedicalSystem", "hasEmergencyNumber", "1022")
+("MedicalSystem", "hasTotalBooths", "60")
+("MedicalSystem", "hasIdentifier", "YellowColor")
+("HealthBooth", "provides", "BasicCare")
+("HealthBooth", "provides", "EmergencyResponse")
+("MelaHospital1", "isLocatedAt", "Gate1")
+("MelaHospital2", "isLocatedAt", "Gate2")
+("MelaHospital3", "isLocatedAt", "Gate4")
+("MelaHospital4", "isLocatedAt", "Gate8")
+("MelaHospital", "hasAmbulanceService", "true")
 
-5. *Question:* I am not feeling well. Where is the medical center?  
-   *Response:* Don't panic. You can dial 1022 or visit the nearest health booth. There are 60 health check booths marked by bright yellow colors. You can also visit Gate Nos. 4, 8, 1, and 2 for the Mela hospital. Alternatively, you can contact the nearest Mela volunteer or Mela official for assistance.
+# Sacred Bathing Schedule
+## Regular Snan
+("PaushPurnima", "hasType", "RegularSnan")
+("PaushPurnima", "hasDate", "2025-01-13")
+("PaushPurnima", "initiates", "KalpvasaPeriod")
+("PaushPurnima", "hasSignificance", "SpiritualPractice")
 
-6. *Question:* What is the timing for the Ganga Aarti?  
-   *Response:* During Prayag Maha Kumbh Mela 2025, the morning Ganga Aarti will take place at 5:30 AM, and the evening Ganga Aarti will be held at 6:30 PM.
+("MaghiPurnima", "hasType", "RegularSnan")
+("MaghiPurnima", "hasDate", "2025-02-12")
+("MaghiPurnima", "honors", "GuruBrahaspati")
+("MaghiPurnima", "bringsBlessing", "HeavenlyBeings")
 
-7. *Question:* Are there shuttles within the Mela grounds?  
-   *Response:* Yes, there are free shuttle services available for kids, women, differently-abled individuals, and senior citizens. These shuttles are white carts. Please do not pay any money to the operator.
+("MahaShivaratri", "hasType", "RegularSnan")
+("MahaShivaratri", "hasDate", "2025-02-26")
+("MahaShivaratri", "marks", "KalpvasaConclusion")
+("MahaShivaratri", "honors", "LordShiva")
 
-8. *Question:* Are there any free food stalls?  
-   *Response:* Yes, there are many 24-hour free food stalls in the Mela grounds. You can find some near Gate Nos. 2, 5, 7, and 9. Please don't waste food and help us keep the Mela grounds clean.
+## Shahi Snan
+("MakarSankranti", "hasType", "ShahiSnan")
+("MakarSankranti", "hasDate", "2025-01-14")
+("MakarSankranti", "marks", "SolarTransition")
+("MakarSankranti", "initiates", "CharitableDonations")
 
-9. *Question:* Which ghats are for bathing?  
-   *Response:* Here are the key bathing ghats at Prayagraj:
-   - Sangam or Triveni Ghat: The confluence of the Ganges, Yamuna, and Saraswati rivers, also known as Triveni or Sangam Ghat.
-   - Rasulabad Ghat: Located on the banks of the Ganges in the Rasoolabad locality in the northern part of the city, this ghat holds historical significance, being the site for the final rites of many famous personalities, including the martyr Chandrashekhar Azad.
-   - Shankar Ghat: Situated near Rasoolabad, in the Teliyarganj locality, on the banks of the Ganges.
-   - Dashashwamedh Ghat: Located on the Ganges in front of the Dara Ganj locality, this ghat is believed to be the site where Lord Brahma performed ten Ashwamedha Yajnas. The Dashashwameshwar Shiva temple is also located here.
-   - Draupadi Ghat: Located in the Cantt Thana area, on the banks of the Ganges. It is home to the Bindu Madhav temple, one of the 12 Madhavs of Prayagraj.
-   - Ram Ghat: Situated on the Ganges in the Sangam area, accessible directly from Kali Sadak in the Triveni area.
-   - Shivkoti Ghat: Near Teliyarganj, in the Shivkuti locality, on the banks of the Ganges. Nearby are Narayan Ashram Ghat, Sitaram Dham, and Koteshwar Mahadev Ghat.
-   - Daraganj Shamshan Ghat: Located between the Eastern Railway Bridge and Shastri Bridge. This ghat is not typically used for bathing but is a site for performing last rites.
-   Major Ghats on the Yamuna:
-   - Balua Ghat: Located on the banks of the Yamuna River in the old city, this ghat has paved stairs leading to the river. It also features a temple dedicated to Yamuna Ji. A fair is held here during the Kartik month.
-   - Gau Ghat: Situated on the banks of the Yamuna near the railway bridge on the Delhi-Howrah line, it is popular for year-round bathing. A boat club is nearby, offering boating experiences. The Triveni Mahotsav is also held here.
-   - Saraswati Ghat: Located near Akbar’s fort, this ghat has a scenic park nearby. People visit here for both bathing and boating, with boats available to travel to Sangam. There is also a temple dedicated to Manikarneshwar Mahadev.
+("MauniAmavasya", "hasType", "ShahiSnan")
+("MauniAmavasya", "hasDate", "2025-01-29")
+("MauniAmavasya", "hasSignificance", "SilenceDay")
+("MauniAmavasya", "hasCrowdDensity", "Highest")
 
-10. *Question:* Are there wheelchairs available for the elderly?  
-   *Response:* Yes, wheelchairs are available for the elderly free of charge at the Mela grounds. Please contact the nearest Mela volunteer or visit any designated assistance booth for help.`
+("BasantPanchami", "hasType", "ShahiSnan")
+("BasantPanchami", "hasDate", "2025-02-03")
+("BasantPanchami", "celebrates", "SpringArrival")
+("BasantPanchami", "honors", "GoddessSaraswati")
+("BasantPanchami", "hasTraditionalColor", "Yellow")
+
+# Ritual Services
+("GangaAarti", "hasType", "DailyRitual")
+("MorningAarti", "hasStartTime", "05:30")
+("MorningAarti", "hasLocation", "GangaGhat")
+("MorningAarti", "hasDuration", "Minutes45")
+("EveningAarti", "hasStartTime", "18:30")
+("EveningAarti", "hasLocation", "GangaGhat")
+("EveningAarti", "hasDuration", "Minutes45")
+
+# Transportation Services
+("ShuttleService", "hasType", "FreeService")
+("ShuttleService", "hasVehicleColor", "White")
+("ShuttleService", "serves", "Children")
+("ShuttleService", "serves", "Women")
+("ShuttleService", "serves", "SeniorCitizens")
+("ShuttleService", "serves", "DifferentlyAbled")
+("ShuttleService", "hasPaymentPolicy", "StrictlyFree")
+("ShuttleService", "hasRouteMap", "Available")
+
+# Food Services
+("FoodService", "hasType", "CharitableService")
+("FoodService", "hasOperatingHours", "24")
+("FoodService", "hasLocation", "Gate2")
+("FoodService", "hasLocation", "Gate5")
+("FoodService", "hasLocation", "Gate7")
+("FoodService", "hasLocation", "Gate9")
+("FoodService", "hasPolicy", "NoWastage")
+("FoodService", "hasPolicy", "CleanlinessRequired")
+
+# Sacred Bathing Locations
+("SangamGhat", "hasType", "PrimaryGhat")
+("SangamGhat", "hasLocation", "TriveniSangam")
+("SangamGhat", "connects", "GangaRiver")
+("SangamGhat", "connects", "YamunaRiver")
+("SangamGhat", "connects", "SaraswatiRiver")
+("SangamGhat", "hasSignificance", "Highest")
+
+("RasuladabGhat", "hasType", "HistoricalGhat")
+("RasuladabGhat", "hasLocation", "NorthPrayagraj")
+("RasuladabGhat", "hasMemorial", "ChandrashekharAzad")
+("RasuladabGhat", "hasRitualType", "FinalRites")
+
+("DashashwamedhGhat", "hasType", "TempleGhat")
+("DashashwamedhGhat", "hasHistory", "BrahmaYajna")
+("DashashwamedhGhat", "hasTemple", "DashashwameshwarShiva")
+
+("BaluaGhat", "hasType", "YamunaGhat")
+("BaluaGhat", "hasInfrastructure", "PavedStairs")
+("BaluaGhat", "hasTemple", "YamunaTemple")
+("BaluaGhat", "hostsFair", "KartikFair")
+
+# Accessibility Services
+("WheelchairService", "hasType", "AccessibilityService")
+("WheelchairService", "hasAvailability", "AllGates")
+("WheelchairService", "hasCost", "Free")
+("WheelchairService", "requiresAssistant", "false")
+("WheelchairService", "provides", "Pickup")
+("WheelchairService", "provides", "Drop")
+("WheelchairService", "hasBookingSystem", "OnSpot")
+
+# Administrative Information
+("MelaVolunteer", "provides", "Assistance")
+("MelaVolunteer", "provides", "Direction")
+("MelaVolunteer", "hasIdentifier", "UniformBadge")
+("MelaVolunteer", "hasTraining", "Emergency")
+("MelaVolunteer", "hasTraining", "CrowdManagement")
+
+# Safety System
+("SafetySystem", "hasEmergencyNumber", "1022")
+("SafetySystem", "hasPatrolling", "24Hours")
+("SafetySystem", "hasCCTV", "Available")
+("SafetySystem", "hasLighting", "AllAreas")`

@@ -27,13 +27,21 @@ import Groq from "groq-sdk";
 import { Microphone, MicrophoneStage } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { KNOWLWEDGE } from "@/app/lib/constants";
+import OpenAI from "openai";
 
 
 
-const openai = new Groq({
+
+// const openai = new Groq({
+//   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+//   dangerouslyAllowBrowser: true,
+// });
+
+const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 });
+
 
 // Define a type for chat messages
 type ChatMessage = {
@@ -166,23 +174,46 @@ export default function InteractiveAvatar() {
     }
   }
 
+  // async function transcribeAudio(audioBlob: Blob) {
+  //   try {
+  //     // Convert Blob to File
+  //     const audioFile = new File([audioBlob], "recording.wav", {
+  //       type: "audio/wav",
+  //     });
+  //     // const response = await openai.audio.transcriptions.create({
+  //     //   model: "whisper-1",
+  //     //   file: audioFile,
+  //     // });
+  //     const response = await openai.audio.transcriptions.create({
+  //       file: audioFile,
+  //       model: "whisper-large-v3",
+  //       prompt: "Specify context or spelling", // Optional
+  //       response_format: "json", // Optional
+  //       language: "hi", // Optional
+  //       temperature: 0.0, // Optional
+  //     });
+  //     const transcription = response.text;
+  //     console.log("Transcription: ", transcription);
+  //     setNewInput(transcription);
+  //     handleGetResponse(transcription)
+  //   } catch (error) {
+  //     console.error("Error transcribing audio:", error);
+  //   }
+  // }
+
   async function transcribeAudio(audioBlob: Blob) {
     try {
       // Convert Blob to File
       const audioFile = new File([audioBlob], "recording.wav", {
         type: "audio/wav",
       });
-      // const response = await openai.audio.transcriptions.create({
-      //   model: "whisper-1",
-      //   file: audioFile,
-      // });
       const response = await openai.audio.transcriptions.create({
+        model: "whisper-1",
         file: audioFile,
-        model: "whisper-large-v3",
-        prompt: "Specify context or spelling", // Optional
-        response_format: "json", // Optional
-        language: "hi", // Optional
-        temperature: 0.0, // Optional
+        language:"hi",
+        prompt: "Specify context or spelling", 
+        response_format: "json",
+        temperature:0.9
       });
       const transcription = response.text;
       console.log("Transcription: ", transcription);
@@ -470,7 +501,7 @@ export default function InteractiveAvatar() {
                   Custom Avatar ID
                 </p>
                 <Input
-                  value="Tyler-incasualsuit-20220721"
+                  value="Tyler"
                   // onChange={(e) => setAvatarId(e.target.value)}
                   placeholder="Enter a custom avatar ID"
                 />
@@ -496,7 +527,7 @@ export default function InteractiveAvatar() {
                   Custom Voice ID
                 </p>
                 <Input
-                  value="aee6c1539b7745a5a7e2f4e537d9bff4"
+                  value="1"
                   // onChange={(e) => setVoiceId(e.target.value)}
                   placeholder="Enter a custom voice ID"
                 />
