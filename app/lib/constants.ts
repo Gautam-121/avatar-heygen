@@ -53,222 +53,44 @@ export const STT_LANGUAGE_LIST = [
 ];
 
 
-export const PROMPT = `Act as a dedicated guide for Kumbh Mela 2025 at Prayagraj, providing navigation assistance while integrating Sensodyne product recommendations. Your primary focus is helping visitors with Kumbh-related queries and identifying opportunities to recommend Sensodyne Pain Relief Toothpaste (₹10 pack).
-Strict Guidelines:
-
-Language Protocol:
-
-
-Communicate ONLY in Hindi
-Keep responses concise (40-45 words maximum)
-Use respectful language throughout
-
-
-Information Parameters:
-
-
-Focus ONLY on Kumbh Mela 2025 Prayagraj events and locations
-Discuss ONLY verified information about:
-
-Snaan dates and timings
-Event locations
-Navigation directions
-Facilities and services
-
-
-Recommend ONLY Sensodyne Pain Relief Toothpaste ₹10 pack when relevant
-
-
-Conversation Framework:
-
-
-Begin with addressing the visitor's Kumbh-related query
-Naturally integrate dental health questions when appropriate
-End EACH response with ONE relevant follow-up question
-Maintain continuous dialogue flow
-
-Response Structure:
-
-Answer the main query (in Hindi, 40-45 words)
-If contextually appropriate, inquire about tooth sensitivity:
-
-During snaan (cold water)
-While consuming prasad
-General dental concerns
-
-
-If sensitivity is mentioned:
-
-Recommend Sensodyne Pain Relief Toothpaste ₹10 pack
-
-
-End with a relevant follow-up question about their Kumbh journey
-
-Redirection Strategies:
-If conversation deviates, use these Hindi phrases:
-
-"आइए कुंभ मेले की आपकी यात्रा के बारे में बात करें..."
-"क्या आप अगले स्नान पर्व की जानकारी जानना चाहेंगे?"
-"स्नान के दौरान ठंडे पानी में कोई परेशानी तो नहीं होती?"
-
-Critical Instructions:
-
-Never break character as Kumbh Mela guide
-Never use English in responses
-Never exceed 40-45 word limit
-Never skip the follow-up question
-Never ignore signs of tooth sensitivity
-Never recommend any product other than Sensodyne Pain Relief ₹10 pack
-Never provide unverified information about Kumbh Mela 2025
-
-Primary Objective: Guide visitors through Kumbh Mela 2025 while naturally identifying opportunities to recommend Sensodyne Pain Relief Toothpaste, maintaining Hindi communication throughout, and ensuring a helpful, continuous conversation flow.`
+export const PROMPT = `You are a ‘Sensodyne Kumbh Mela Assistant’ who is helping people navigate Kumbh Mela with ease. Users will have questions about information happening in the Kumbh Mela 2025 in Prayagraj, Uttar Pradesh, India. Always answer to the point within 40-45 words. Be polite, respectful and ensure that the conversation is continuous – end each statement with a probing question. In the conversation check with user if they have any tooth related issue. If they do please advice them to use Sensodyne Pain Relief Toothpaste which is now available at Rupees 10 only.`
 
 
 export const KNOWLWEDGE = `
-("KumbhMela2025", "hasName", "Prayag Maha Kumbh Mela")
-("KumbhMela2025", "hasYear", "2025")
-("KumbhMela2025", "hasLocation", "Prayagraj")
-("KumbhMela2025", "hasType", "ReligiousFestival")
-("KumbhMela2025", "hasStatus", "Upcoming")
+Main entry gates to the Kumbh Mela area
 
-# Gate Information
-("Gate1", "hasCategory", "GeneralEntry")
-("Gate4", "hasCategory", "GeneralEntry")
-("Gate6", "hasCategory", "GeneralEntry")
-("Gate8", "hasCategory", "GeneralEntry")
-("Gate2", "hasCategory", "SaintEntry")
-("Gate3", "hasCategory", "SaintEntry")
-("Gate5", "hasCategory", "VIPEntry")
-("Gate2", "providesAccessTo", "Akharas")
-("Gate3", "providesAccessTo", "Akharas")
-("Gate5", "providesAccessTo", "VIPArea")
+There are six main entry gates for general devotees: Gate number one, four, six, and eight. Gates two and three are designated for saints and akharas, and Gate five is reserved for VIP entry.
 
-# Lost and Found System
-("LostAndFoundSystem", "hasTotalBooths", "16")
-("LostAndFoundSystem", "hasEmergencyProtocol", "true")
-("LostAndFoundBooth1", "isLocatedNear", "Gate2")
-("LostAndFoundBooth2", "isLocatedNear", "Gate5")
-("LostAndFoundBooth3", "isLocatedNear", "Gate8")
-("LostAndFoundBooth4", "isLocatedNear", "Gate9")
-("LostAndFoundBooth", "provides", "ChildLocatorService")
-("LostAndFoundBooth", "provides", "ItemRecoveryService")
-("LostAndFoundBooth", "hasOperatingHours", "24")
 
-# Medical Services
-("MedicalSystem", "hasEmergencyNumber", "1022")
-("MedicalSystem", "hasTotalBooths", "60")
-("MedicalSystem", "hasIdentifier", "YellowColor")
-("HealthBooth", "provides", "BasicCare")
-("HealthBooth", "provides", "EmergencyResponse")
-("MelaHospital1", "isLocatedAt", "Gate1")
-("MelaHospital2", "isLocatedAt", "Gate2")
-("MelaHospital3", "isLocatedAt", "Gate4")
-("MelaHospital4", "isLocatedAt", "Gate8")
-("MelaHospital", "hasAmbulanceService", "true")
+Lost and found booth
+16 lost and found booths available at Prayag Maha Kumbh Mela 2025. They are located near Gate number  two, five, eight, and nine, providing assistance to reunite visitors with lost items or companions.
 
-# Sacred Bathing Schedule
-## Regular Snan
-("PaushPurnima", "hasType", "RegularSnan")
-("PaushPurnima", "hasDate", "2025-01-13")
-("PaushPurnima", "initiates", "KalpvasaPeriod")
-("PaushPurnima", "hasSignificance", "SpiritualPractice")
+Snan dates
 
-("MaghiPurnima", "hasType", "RegularSnan")
-("MaghiPurnima", "hasDate", "2025-02-12")
-("MaghiPurnima", "honors", "GuruBrahaspati")
-("MaghiPurnima", "bringsBlessing", "HeavenlyBeings")
+The Snan dates for the Prayagraj Kumbh Mela 2025 are as follows
+Paush Purnima , 13 January 2025  Marks the unofficial start of the Kumbh Mela and the beginning of Kalpvasa, a period of intense spiritual practices.
+Maghi Purnima , 12 February 2025 Associated with the veneration of Guru Brahaspati, this day is believed to bring blessings from heavenly beings.
+Maha Shivaratri ,26 February 2025 The final holy bath for Kalpvasis, dedicated to Lord Shiva.
+The Shahi Snan (Royal Bath) dates are
+Makar Sankranti , 14 January 2025: Marks the sun s transition and the beginning of charitable donations at the Kumbh Mela.
+Mauni Amavasya ,29 January 2025: Known as the day of silence, this date draws the largest gathering for a holy dip.
+Basant Panchami , 3 February 2025: Celebrates the arrival of spring and the goddess Saraswati, with devotees traditionally dressed in yellow.
 
-("MahaShivaratri", "hasType", "RegularSnan")
-("MahaShivaratri", "hasDate", "2025-02-26")
-("MahaShivaratri", "marks", "KalpvasaConclusion")
-("MahaShivaratri", "honors", "LordShiva")
 
-## Shahi Snan
-("MakarSankranti", "hasType", "ShahiSnan")
-("MakarSankranti", "hasDate", "2025-01-14")
-("MakarSankranti", "marks", "SolarTransition")
-("MakarSankranti", "initiates", "CharitableDonations")
+Children's Safety and Security
+There are 16 lost and found booths available at Prayag Maha Kumbh Mela 2025. They are located near Gate number two, five, eight, and nine, and are ready to assist in reuniting visitors with lost items or companions.
 
-("MauniAmavasya", "hasType", "ShahiSnan")
-("MauniAmavasya", "hasDate", "2025-01-29")
-("MauniAmavasya", "hasSignificance", "SilenceDay")
-("MauniAmavasya", "hasCrowdDensity", "Highest")
+Medical Care & Centers
+Devotees can dial 1022 or visit the nearest health booth. There are 60 health check booths marked by bright yellow colors. You can also visit Gate number four, eight, one, and two for the Mela hospital. 
 
-("BasantPanchami", "hasType", "ShahiSnan")
-("BasantPanchami", "hasDate", "2025-02-03")
-("BasantPanchami", "celebrates", "SpringArrival")
-("BasantPanchami", "honors", "GoddessSaraswati")
-("BasantPanchami", "hasTraditionalColor", "Yellow")
+Timing for the Ganga Aarti
 
-# Ritual Services
-("GangaAarti", "hasType", "DailyRitual")
-("MorningAarti", "hasStartTime", "05:30")
-("MorningAarti", "hasLocation", "GangaGhat")
-("MorningAarti", "hasDuration", "Minutes45")
-("EveningAarti", "hasStartTime", "18:30")
-("EveningAarti", "hasLocation", "GangaGhat")
-("EveningAarti", "hasDuration", "Minutes45")
+During Prayag Maha Kumbh Mela 2025, the morning Ganga Aarti will take place at Five thirty AM, and the evening Ganga Aarti will be held at "Six thirty" PM.
 
-# Transportation Services
-("ShuttleService", "hasType", "FreeService")
-("ShuttleService", "hasVehicleColor", "White")
-("ShuttleService", "serves", "Children")
-("ShuttleService", "serves", "Women")
-("ShuttleService", "serves", "SeniorCitizens")
-("ShuttleService", "serves", "DifferentlyAbled")
-("ShuttleService", "hasPaymentPolicy", "StrictlyFree")
-("ShuttleService", "hasRouteMap", "Available")
 
-# Food Services
-("FoodService", "hasType", "CharitableService")
-("FoodService", "hasOperatingHours", "24")
-("FoodService", "hasLocation", "Gate2")
-("FoodService", "hasLocation", "Gate5")
-("FoodService", "hasLocation", "Gate7")
-("FoodService", "hasLocation", "Gate9")
-("FoodService", "hasPolicy", "NoWastage")
-("FoodService", "hasPolicy", "CleanlinessRequired")
+Shuttles within the Mela grounds
+There are free shuttle services available for kids, women, differently-abled individuals, and senior citizens. These shuttles are white carts. Please do not pay any money to the operator.
 
-# Sacred Bathing Locations
-("SangamGhat", "hasType", "PrimaryGhat")
-("SangamGhat", "hasLocation", "TriveniSangam")
-("SangamGhat", "connects", "GangaRiver")
-("SangamGhat", "connects", "YamunaRiver")
-("SangamGhat", "connects", "SaraswatiRiver")
-("SangamGhat", "hasSignificance", "Highest")
-
-("RasuladabGhat", "hasType", "HistoricalGhat")
-("RasuladabGhat", "hasLocation", "NorthPrayagraj")
-("RasuladabGhat", "hasMemorial", "ChandrashekharAzad")
-("RasuladabGhat", "hasRitualType", "FinalRites")
-
-("DashashwamedhGhat", "hasType", "TempleGhat")
-("DashashwamedhGhat", "hasHistory", "BrahmaYajna")
-("DashashwamedhGhat", "hasTemple", "DashashwameshwarShiva")
-
-("BaluaGhat", "hasType", "YamunaGhat")
-("BaluaGhat", "hasInfrastructure", "PavedStairs")
-("BaluaGhat", "hasTemple", "YamunaTemple")
-("BaluaGhat", "hostsFair", "KartikFair")
-
-# Accessibility Services
-("WheelchairService", "hasType", "AccessibilityService")
-("WheelchairService", "hasAvailability", "AllGates")
-("WheelchairService", "hasCost", "Free")
-("WheelchairService", "requiresAssistant", "false")
-("WheelchairService", "provides", "Pickup")
-("WheelchairService", "provides", "Drop")
-("WheelchairService", "hasBookingSystem", "OnSpot")
-
-# Administrative Information
-("MelaVolunteer", "provides", "Assistance")
-("MelaVolunteer", "provides", "Direction")
-("MelaVolunteer", "hasIdentifier", "UniformBadge")
-("MelaVolunteer", "hasTraining", "Emergency")
-("MelaVolunteer", "hasTraining", "CrowdManagement")
-
-# Safety System
-("SafetySystem", "hasEmergencyNumber", "1022")
-("SafetySystem", "hasPatrolling", "24Hours")
-("SafetySystem", "hasCCTV", "Available")
-("SafetySystem", "hasLighting", "AllAreas")`
+Free food stalls
+There are many 24-hour free food stalls in the Mela grounds. You can find some
+near Gate number two, five, seven, and nine. Please don't waste food and help us keep the Mela grounds clean.`

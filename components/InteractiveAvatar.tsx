@@ -133,7 +133,7 @@ export default function InteractiveAvatar() {
         console.log("Enter inside")
         // Update the Gpt Output Showing
         setGptOutput(sanitizedData)
-        await avatar.current.speak({ text: sanitizedData, taskType: TaskType.REPEAT, taskMode: TaskMode.SYNC })
+        await avatar.current.speak({ text: sanitizedData })
           .catch(async (e) => {
             setDebug(e.message);
             // Check if the error is an object with a response field
@@ -210,7 +210,7 @@ export default function InteractiveAvatar() {
       const response = await openai.audio.transcriptions.create({
         model: "whisper-1",
         file: audioFile,
-        language:"hi",
+        language:"en",
         prompt: "Specify context or spelling", 
         response_format: "json",
         temperature:0.9
@@ -298,7 +298,7 @@ export default function InteractiveAvatar() {
           rate: 1.2, // 0.5 ~ 1.5
           emotion: VoiceEmotion.FRIENDLY,
         },
-        language:"hi"
+        language: "en"
       });
 
       console.log("res", res)
@@ -327,7 +327,7 @@ export default function InteractiveAvatar() {
       return;
     }
     // speak({ text: text, task_type: TaskType.REPEAT })
-    await avatar.current.speak({ text: text, taskType: TaskType.REPEAT, taskMode: TaskMode.SYNC }).catch((e) => {
+    await avatar.current.speak({ text: text }).catch((e) => {
       setDebug(e.message);
     });
     setIsLoadingRepeat(false);
@@ -372,7 +372,7 @@ export default function InteractiveAvatar() {
           console.log("Enter inside the code", isSessionActive)
           // Update the Gpt Output Showing
           const name = localStorage.getItem("name")
-          const text = `नमस्ते ${name}! सेन्सोडाइन कुंभ मेला सहायक में आपका स्वागत है! मैं यहाँ कुंभ मेला 2025 के दौरान आपकी सहायता के लिए हूँ। क्या आपको आयोजन स्थल, सेवाओं या कार्यक्रमों की जानकारी चाहिए?`
+          const text = `Hello ${name}! Welcome to the Sensodyne Kumbh Mela Assistant! I am here to assist you during the Kumbh Mela 2025. Do you need information about the event location, services, or programs?`
           const newUserMessage: ChatMessage = {
             role: 'user',
             content: text
@@ -381,7 +381,7 @@ export default function InteractiveAvatar() {
           const updatedHistory = [...chatHistory, newUserMessage];
 
           
-          avatar.current && await avatar.current.speak({ text: text, taskType: TaskType.REPEAT, taskMode: TaskMode.SYNC})
+          avatar.current && await avatar.current.speak({ text: text })
             .catch(async (e) => {
               // Check if the error is an object with a response field
               if (e && e.response) {

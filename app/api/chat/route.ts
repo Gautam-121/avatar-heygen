@@ -46,7 +46,7 @@
 // }
 
 import { OpenAI } from "openai";
-import { PROMPT } from "@/app/lib/constants";
+import {PROMPT} from "../../lib/constants"
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -54,6 +54,8 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const openai = new OpenAI({ apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY });
   const { messages } = await req.json();
+
+  console.log("mesages" , messages)
 
   // Enhance the messages with a system message
   const enhancedMessages = [
