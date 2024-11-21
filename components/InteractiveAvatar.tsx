@@ -133,7 +133,7 @@ export default function InteractiveAvatar() {
         console.log("Enter inside")
         // Update the Gpt Output Showing
         setGptOutput(sanitizedData)
-        await avatar.current.speak({ text: sanitizedData })
+        await avatar.current.speak({ text: sanitizedData ,  taskType: TaskType.REPEAT, taskMode: TaskMode.SYNC})
           .catch(async (e) => {
             setDebug(e.message);
             // Check if the error is an object with a response field
@@ -189,7 +189,7 @@ export default function InteractiveAvatar() {
   //       model: "whisper-large-v3",
   //       prompt: "Specify context or spelling", // Optional
   //       response_format: "json", // Optional
-  //       language: "hi", // Optional
+  //       language: "en", // Optional
   //       temperature: 0.0, // Optional
   //     });
   //     const transcription = response.text;
@@ -327,7 +327,7 @@ export default function InteractiveAvatar() {
       return;
     }
     // speak({ text: text, task_type: TaskType.REPEAT })
-    await avatar.current.speak({ text: text }).catch((e) => {
+    await avatar.current.speak({ text: text ,  taskType: TaskType.REPEAT, taskMode: TaskMode.SYNC }).catch((e) => {
       setDebug(e.message);
     });
     setIsLoadingRepeat(false);
@@ -381,7 +381,7 @@ export default function InteractiveAvatar() {
           const updatedHistory = [...chatHistory, newUserMessage];
 
           
-          avatar.current && await avatar.current.speak({ text: text })
+          avatar.current && await avatar.current.speak({ text: text ,  taskType: TaskType.REPEAT, taskMode: TaskMode.SYNC})
             .catch(async (e) => {
               // Check if the error is an object with a response field
               if (e && e.response) {
