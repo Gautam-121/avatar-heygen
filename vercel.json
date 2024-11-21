@@ -1,0 +1,8 @@
+{
+    "cron": [
+      {
+        "path": "/api/check-credits",
+        "schedule": "0 6 * * *"
+      }
+    ]
+}

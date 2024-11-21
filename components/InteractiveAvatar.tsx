@@ -148,6 +148,18 @@ export default function InteractiveAvatar() {
                   alert("Session Expired")
                   window.location.reload()
                 }
+                else if(error.code == 10014){
+                  alert("Session Expired")
+                  window.location.reload()
+                }
+                else if(error.code == 10007){
+                  alert("Concurrent limit reached")
+                  window.location.reload()
+                }
+                else if(error.code == 400123){
+                  alert("Exceed rate limit")
+                  window.location.reload()
+                }
                 else if(error.code == 10015){
                   alert("Limit Expired , Please come after some time")
                   window.location.reload()
