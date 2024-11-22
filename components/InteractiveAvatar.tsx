@@ -222,7 +222,7 @@ export default function InteractiveAvatar() {
       const response = await openai.audio.transcriptions.create({
         model: "whisper-1",
         file: audioFile,
-        language:"en",
+        language:"hi",
         prompt: "Specify context or spelling", 
         response_format: "json",
         temperature:0.9
@@ -310,7 +310,7 @@ export default function InteractiveAvatar() {
           rate: 1.2, // 0.5 ~ 1.5
           emotion: VoiceEmotion.FRIENDLY,
         },
-        language: "en"
+        language: "hi"
       });
 
       console.log("res", res)
@@ -384,7 +384,7 @@ export default function InteractiveAvatar() {
           console.log("Enter inside the code", isSessionActive)
           // Update the Gpt Output Showing
           const name = localStorage.getItem("name")
-          const text = `Hello ${name}! Welcome to the Sensodyne Kumbh Mela Assistant! I am here to assist you during the Kumbh Mela 2025. Do you need information about the event location, services, or programs?`
+          const text = `स्वागत है ${name}, मैं कुंभ मेला के लिए आपका सहायक हूँ। यदि आपको कुंभ मेला से संबंधित कोई सवाल हो, तो कृपया बताएं।`
           const newUserMessage: ChatMessage = {
             role: 'user',
             content: text
