@@ -307,6 +307,7 @@ export default function InteractiveAvatar() {
         avatarName: avatarId,
         knowledgeBase: KNOWLWEDGE,
         voice: {
+          voiceId: "aee6c1539b7745a5a7e2f4e537d9bff4",
           rate: 0.9, // 0.5 ~ 1.5
           emotion: VoiceEmotion.FRIENDLY,
         },
