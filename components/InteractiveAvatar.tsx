@@ -57,7 +57,7 @@ export default function InteractiveAvatar() {
   const [stream, setStream] = useState<MediaStream>();
   const [debug, setDebug] = useState<string>();
   const [knowledgeId, setKnowledgeId] = useState<string>("");
-  const [avatarId, setAvatarId] = useState<string>("Tyler-incasualsuit-20220721");
+  const [avatarId, setAvatarId] = useState<string>("eb0a8cc8046f476da551a5559fbb5c82");
   const [language, setLanguage] = useState<string>('hi');
 
   const [data, setData] = useState<StartAvatarResponse>();
@@ -307,7 +307,7 @@ export default function InteractiveAvatar() {
         avatarName: avatarId,
         knowledgeBase: KNOWLWEDGE,
         voice: {
-          rate: 1.2, // 0.5 ~ 1.5
+          rate: 0.9, // 0.5 ~ 1.5
           emotion: VoiceEmotion.FRIENDLY,
         },
         language: "hi"
@@ -513,7 +513,7 @@ export default function InteractiveAvatar() {
                   Custom Avatar ID
                 </p>
                 <Input
-                  value="Tyler"
+                  value="Raj"
                   // onChange={(e) => setAvatarId(e.target.value)}
                   placeholder="Enter a custom avatar ID"
                 />
