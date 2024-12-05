@@ -249,6 +249,8 @@ export default function InteractiveAvatar() {
             type: "audio/wav",
           });
           audioChunks.current = [];
+          setIsUserTalking(true)
+          setIsLoadingChat(true)
           transcribeAudio(audioBlob);
         };
         mediaRecorder.current.start();
@@ -275,11 +277,13 @@ export default function InteractiveAvatar() {
     });
     avatar.current.on(StreamingEvents.AVATAR_START_TALKING, (e) => {
       console.log("Avatar started talking", e);
+      setIsUserTalking(true);
     });
     avatar.current.on(StreamingEvents.AVATAR_STOP_TALKING, (e) => {
       console.log("Avatar stopped talking", e);
       setGptOutput("")
       setNewInput("")
+      setIsUserTalking(false);
     });
     avatar.current.on(StreamingEvents.STREAM_DISCONNECTED, () => {
       console.log("Stream disconnected");
@@ -296,6 +300,7 @@ export default function InteractiveAvatar() {
     avatar.current?.on(StreamingEvents.USER_START, (event) => {
       console.log(">>>>> User started talking:", event);
       setIsUserTalking(true);
+      console.log(isUserTalking)
     });
     avatar.current?.on(StreamingEvents.USER_STOP, (event) => {
       console.log(">>>>> User stopped talking:", event);
@@ -356,6 +361,13 @@ export default function InteractiveAvatar() {
       .catch((e) => {
         setDebug(e.message);
       });
+
+      // Reset GPT output and input
+      setGptOutput("");
+      setNewInput("");
+  
+      // Ensure the microphone becomes available
+      setIsUserTalking(false);
   }
 
   async function endSession() {
@@ -431,7 +443,7 @@ export default function InteractiveAvatar() {
         } else {
           setDebug("Avatar API not initialized");
         }
-      },3000) 
+      },500) 
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -584,10 +596,8 @@ export default function InteractiveAvatar() {
                   setDebug("Please enter text");
                   return;
                 }
-                // handleSubmit();
                 handleGetResponse(newInput);
               }}
-              
               setInput={setNewInput}
               loading={isLoadingChat}
               endContent={
@@ -596,7 +606,7 @@ export default function InteractiveAvatar() {
                 >
                   <Button
                     onClick={!recording ? startRecording : stopRecording}
-                    isDisabled={!stream}
+                    isDisabled={!stream || isUserTalking}
                     isIconOnly
                     className={clsx(
                       "mr-4 text-white",
